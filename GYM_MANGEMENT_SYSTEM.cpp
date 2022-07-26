@@ -4,10 +4,24 @@
 #include<iomanip>
 //#include<ctime>
 #include<windows.h>
-
 using namespace std;
-
-class Member{
+class SanoGraphics
+{
+	public:
+	void graphics()
+	{
+	cout<<"\n\t\t\t\t\t\t\t      ________                                        ________";
+	cout<<"\n\t\t\t\t\t\t\t     |        |                                      |        |";
+  	cout<<"\n\t\t\t\t\t\t\t   __||||||||||                                      ||||||||||__";
+  	cout<<"\n\t\t\t\t\t\t\t _|  ||||||||||______________________________________||||||||||  |_";
+    cout<<"\n\t\t\t\t\t\t\t|_|  ||||||||||______________________________________||||||||||  |_|";
+  	cout<<"\n\t\t\t\t\t\t\t  |__||||||||||                                      ||||||||||__|";
+  	cout<<"\n\t\t\t\t\t\t\t     ||||||||||                                      ||||||||||";
+  	cout<<"\n\t\t\t\t\t\t\t     |________|                                      |________|";
+    }
+};
+class Member
+{
 	protected:
 		string name,contact_no;
 		int id,age,height,weight;
@@ -15,28 +29,30 @@ class Member{
 	public:
 		void add_members();
 };
-class membership_time: public Member{
+class membership_time: public Member
+{
 	int day,month,year;
 	public:
 		void getMembership();
 };
-void Title_menu(){
+void Title_menu()
+{
 	cout<<endl<<endl<<endl<<endl;
-	cout<<"\t\t\t\t\t =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
-	cout<<"\t\t\t\t\t\t  GYM MANAGEMENT SYSTEM"<<endl;
-	cout<<"\t\t\t\t\t =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
+	cout<<"\t\t\t\t\t\t\t\t      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
+	cout<<"\t\t\t\t\t\t\t\t\t       GYM MANAGEMENT SYSTEM"<<endl;
+	cout<<"\t\t\t\t\t\t\t\t      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
 }
 int menu(){
 	char ch;
-	cout<<endl<<"\t\t\t\t\t      1) Add Members...............";
-	cout<<endl<<"\t\t\t\t\t      2) List Members..............";
-	cout<<endl<<"\t\t\t\t\t      3) Find Members..............";
-	cout<<endl<<"\t\t\t\t\t      4) Workout Sheet.............";
-	cout<<endl<<"\t\t\t\t\t      5) Trainers Information......";
-	cout<<endl<<"\t\t\t\t\t      6) Equipment Information.....";
-	cout<<endl<<"\t\t\t\t\t      7) Exit......................";
-	cout<<endl<<"\t\t\t\t\t =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
-	cout<<"\t\t\t\t\t\t Choice : ";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            1) Add Members...............";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            2) List Members..............";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            3) Find Members..............";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            4) Workout Sheet.............";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            5) Trainers Information......";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            6) Equipment Information.....";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            7) Exit......................";
+	cout<<endl<<"\t\t\t\t\t\t\t\t      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
+	cout<<"\t\t\t\t\t\t\t\t\t      Choice : ";
 	cin>>ch;
 	return ch;
 }
@@ -83,6 +99,8 @@ void choice(char ch1){
 }
 int main(){
 	char c;
+	SanoGraphics dumbbell;
+	dumbbell.graphics();
 	Title_menu();
 	c = menu();
 	choice(c);
