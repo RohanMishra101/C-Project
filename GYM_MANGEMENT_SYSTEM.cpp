@@ -1,5 +1,6 @@
 #include<fstream>
 #include<iostream>
+#include<stdlib.h>
 #include<iomanip>
 //#include<ctime>
 #include<windows.h>
@@ -39,8 +40,9 @@ int menu(){
 	cin>>ch;
 	return ch;
 }
-void choice(char choice){
-	switch(choice){
+void choice(char ch1){
+	char ch2;
+	switch(ch1){
 		case '1':
 			system("cls");
 			cout<<"Hello";
@@ -65,13 +67,18 @@ void choice(char choice){
 			system("cls");
 			cout<<"Hoho";
 		break;
+		case '7':
+			exit(0);
+		break;
 		default:
 			cout<<"\t\t\t\t\t\t Invalid Choice!!!"<<endl;
 			cout<<"\t\t\t\t\t\t Enter Valid Choice";
 			Sleep(2000);
 			system("cls");
 			Title_menu();
-			menu();
+			ch2 = menu();
+			choice(ch2);
+		break;
 	}
 }
 int main(){
