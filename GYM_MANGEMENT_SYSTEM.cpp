@@ -33,7 +33,7 @@ class Member
 	    switch(choice)
 		{
 		case '1':
-			int year,month,day;
+			int year,month,day,membership;
 			system("cls");
 			cout<<"\n\n\n\n\n\n\n\n"; 
    	    	cout<<"\n\t\t\t\t\t\t\t\t\t(|--|)Add Member details down bellow(|--|)";
@@ -68,51 +68,59 @@ class Member
 			     	cout<<"\n";
 			     	goto monthwrong;
 				}	 
-			   /*daywrong: 
-			   printf("\t\t\t\t\t\t\t\t\tDay:");
-			   scanf("%d",&dataM.time.day);
-			   fflush(stdin);
-			   if(dataM.time.day>31||dataM.time.day<1)
-			     {
-			     	printf("Wrong Entry!!");
-			     	printf("\n");
+			daywrong: 
+			cout<<"\t\t\t\t\t\t\t\t\tDay:";
+			cin>>day;
+			fflush(stdin);
+			if(day>31||day<1)
+			    {
+			     	cout<<"Wrong Entry!!";
+			     	cout<<"\n";
 			     	goto daywrong;
-			     }
-			   membershipwrong:	  
-			   printf("\t\t\t\t\t\t\t\t\tChoose a membership plan:");
-			   printf("\n\t\t\t\t\t\t\t\t\t3months");
-			   printf("\n\t\t\t\t\t\t\t\t\t6months");
-			   printf("\n\t\t\t\t\t\t\t\t\t9months");
-			   printf("\n\t\t\t\t\t\t\t\t\t12months");
-			   printf("\n\t\t\t\t\t\t\t\t\tEnter the membership plan(months):");
-			   scanf("%d",&dataM.choicemembership);
-			   if(dataM.choicemembership==3||dataM.choicemembership==6||dataM.choicemembership==9||dataM.choicemembership==12)
+			    }
+			membershipwrong:	  
+			cout<<"\t\t\t\t\t\t\t\t\tChoose a membership plan:";
+			cout<<"\n\t\t\t\t\t\t\t\t\t3months";
+			cout<<"\n\t\t\t\t\t\t\t\t\t6months";
+			cout<<"\n\t\t\t\t\t\t\t\t\t9months";
+			cout<<"\n\t\t\t\t\t\t\t\t\t12months";
+			cout<<"\n\t\t\t\t\t\t\t\t\tEnter the membership plan(months):";
+			cin>>membership;
+			if(membership==3||membership==6||membership==9||membership==12)
 			   { 
 			      int eyear,emonth,tempmonth;
-			      tempmonth=dataM.time.month+dataM.choicemembership;
-	              printf("\n\t\t\t\t\t\t\t\t\tYour package will end after %dmonths prior to this date.",dataM.choicemembership);
+			      tempmonth=month+membership;
+	              cout<<"\n\t\t\t\t\t\t\t\t\tYour package will end after "; 
+				  cout<<membership;
+				  cout<<"months prior to this date.";
 	              if(tempmonth>12)
 	                 {
-	                 	eyear=dataM.time.year+1;
+	                 	eyear=year+1;
 	                 	emonth=tempmonth-12;
-	                 	printf("\n\t\t\t\t\t\t\t\t\tMembership Ending Date:");
-	                 	printf("\n\t\t\t\t\t\t\t\t\tYear:%d",eyear);
-	                 	printf("\n\t\t\t\t\t\t\t\t\tMonth:%d",emonth);
-	                 	printf("\n\t\t\t\t\t\t\t\t\tDay:%d",dataM.time.day);
+	                 	cout<<"\n\t\t\t\t\t\t\t\t\tMembership Ending Date:";
+	                 	cout<<"\n\t\t\t\t\t\t\t\t\tYear";
+						cout<<eyear;
+	                 	cout<<"\n\t\t\t\t\t\t\t\t\tMonth:";
+						cout<<emonth;
+	                 	cout<<"\n\t\t\t\t\t\t\t\t\tDay:";
+						cout<<day;
 					 }
 			      else
 				     {
-				     	printf("\n\t\t\t\t\t\t\t\t\tMembership Ending Date:");
-	                 	printf("\n\t\t\t\t\t\t\t\t\tYear:%d",dataM.time.year);
-	                 	printf("\n\t\t\t\t\t\t\t\t\tMonth:%d",dataM.time.month+dataM.choicemembership);
-	                 	printf("\n\t\t\t\t\t\t\t\t\tDay:%d",dataM.time.day);
+				     	cout<<"\n\t\t\t\t\t\t\t\t\tMembership Ending Date:";
+	                 	cout<<"\n\t\t\t\t\t\t\t\t\tYear:";
+						cout<<year;
+	                 	cout<<"\n\t\t\t\t\t\t\t\t\tMonth:",
+						cout<<month+membership;
+	                 	cout<<"\n\t\t\t\t\t\t\t\t\tDay:";
+						cout<<day;
 				     }		 
 			   }
 			   else
 			   {
-			   	 printf("\n\t\t\t\t\t\t\t\t\tThis package doesnot exist!!");
+			   	 cout<<"\n\t\t\t\t\t\t\t\t\tThis package doesnot exist!!";
 			   	 goto membershipwrong;
-			   }*/
+			   }
 		break;
 		case '2':
 			system("cls");
