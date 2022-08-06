@@ -18,13 +18,13 @@ class SanoGraphics
   	    cout<<"\n\t\t\t\t\t\t\t     ||||||||||                                      ||||||||||";
   	    cout<<"\n\t\t\t\t\t\t\t     |________|                                      |________|";
     }
-    void thankyou()
+   /*void thankyou()
     {
     	cout<<"\n\t\t\t\t\t\t\t        _________    ___     ___     __     ___   ____   ___     ___";
         cout<<"\n\t\t\t\t\t\t\t       |         |  |   |   |   |   /  \   |   | /    | |   |   /   |";
         cout<<"\n\t\t\t\t\t\t\t       |__     __|  |   |___|   |  /    \  |   |/     | |   |  /   /";
         cout<<"\n\t\t\t\t\t\t\t          |   |     |    ___    | /  /\  \ |      /|  | |   | /   /"
-	}
+	}*/
 };
 class Member
 {
@@ -156,7 +156,7 @@ int main(){
 	int choice;
 	SanoGraphics dumbbell;
 	dumbbell.graphics();
-	dumbbell.thankyou();
+	//dumbbell.thankyou();
 	Member member;
 	top:
 	member.Title_menu();
@@ -173,11 +173,11 @@ int main(){
 	        	fstream file_obj;
                 file_obj.open("E:\\Member.txt",ios::out);
         		member.Add_Member();
-		        file_obj.write((char*)&member, sizeof(member));
+		        file_obj.write((char*)&member,sizeof(member));
 		        YesNoChoice:
 		        SanoGraphics TY;
 		        system("cls");
-		        TY.thankyou();
+		       // TY.thankyou();
 		        cout<<"\n\t\t\t\t\t\t\t\t\tDo you want to add another member:";
 		        cout<<"\n\t\t\t\t\t\t\t\t\t1)Yes                        2)No";
 		        cout<<"Choice:";
