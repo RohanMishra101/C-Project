@@ -5,21 +5,8 @@
 //#include<ctime>
 #include<windows.h>
 using namespace std;
-class SanoGraphics
-{
-	public:
-	void graphics()
-	{
-	cout<<"\n\t\t\t\t\t\t\t      ________                                        ________";
-	cout<<"\n\t\t\t\t\t\t\t     |        |                                      |        |";
-  	cout<<"\n\t\t\t\t\t\t\t   __||||||||||                                      ||||||||||__";
-  	cout<<"\n\t\t\t\t\t\t\t _|  ||||||||||______________________________________||||||||||  |_";
-    cout<<"\n\t\t\t\t\t\t\t|_|  ||||||||||______________________________________||||||||||  |_|";
-  	cout<<"\n\t\t\t\t\t\t\t  |__||||||||||                                      ||||||||||__|";
-  	cout<<"\n\t\t\t\t\t\t\t     ||||||||||                                      ||||||||||";
-  	cout<<"\n\t\t\t\t\t\t\t     |________|                                      |________|";
-    }
-};
+
+
 class Member
 {
 	protected:
@@ -35,6 +22,18 @@ class membership_time: public Member
 	public:
 		void getMembership();
 };
+void graphics()
+{
+	cout<<"\n\t\t\t\t\t\t\t      ________                                        ________";
+	cout<<"\n\t\t\t\t\t\t\t     |        |                                      |        |";
+	cout<<"\n\t\t\t\t\t\t\t   __||||||||||                                      ||||||||||__";
+	cout<<"\n\t\t\t\t\t\t\t _|  ||||||||||______________________________________||||||||||  |_";
+	cout<<"\n\t\t\t\t\t\t\t|_|  ||||||||||______________________________________||||||||||  |_|";
+	cout<<"\n\t\t\t\t\t\t\t  |__||||||||||                                      ||||||||||__|";
+	cout<<"\n\t\t\t\t\t\t\t     ||||||||||                                      ||||||||||";
+	cout<<"\n\t\t\t\t\t\t\t     |________|                                      |________|";
+}
+
 void Title_menu()
 {
 	cout<<endl<<endl<<endl<<endl;
@@ -87,10 +86,11 @@ void choice(char ch1){
 			exit(0);
 		break;
 		default:
-			cout<<"\t\t\t\t\t\t Invalid Choice!!!"<<endl;
-			cout<<"\t\t\t\t\t\t Enter Valid Choice";
+			cout<<"\t\t\t\t\t\t\t\t\t      Invalid Choice!!!"<<endl;
+			cout<<"\t\t\t\t\t\t\t\t\t      Enter Valid Choice";
 			Sleep(2000);
 			system("cls");
+			graphics();
 			Title_menu();
 			ch2 = menu();
 			choice(ch2);
@@ -98,9 +98,10 @@ void choice(char ch1){
 	}
 }
 int main(){
+	fstream file_obj;
+	file_obj.open("GYM.txt",ios::app);
 	char c;
-	SanoGraphics dumbbell;
-	dumbbell.graphics();
+	graphics();
 	Title_menu();
 	c = menu();
 	choice(c);
