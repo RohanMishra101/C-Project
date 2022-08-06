@@ -172,6 +172,10 @@ void Member::Add_Member()
 int main(){
 	int choice;
 	SanoGraphics dumbbell;
+<<<<<<< HEAD
+=======
+	dumbbell.graphics();
+>>>>>>> 921f4c447d47038de9c64b035c20099ba64c855b
 	//dumbbell.thankyou();
 	Member member;
 	top:
@@ -193,8 +197,11 @@ int main(){
 		        file_obj.write((char*)&member,sizeof(member));
 		        YesNoChoice:
 		        system("cls");
+<<<<<<< HEAD
 		        SanoGraphics TY;
 		        
+=======
+>>>>>>> 921f4c447d47038de9c64b035c20099ba64c855b
 		       // TY.thankyou();
 		        cout<<"\n\t\t\t\t\t\t\t\t\tDo you want to add another member:";
 		        cout<<"\n\t\t\t\t\t\t\t\t\t1)Yes                        2)No"<<endl;
