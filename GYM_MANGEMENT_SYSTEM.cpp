@@ -1,5 +1,4 @@
 #include<iostream>
-#include<stdlib.h>
 #include<iomanip>
 #include<ctime>
 #include<windows.h>
@@ -7,7 +6,6 @@
 using namespace std;
 class SanoGraphics
 {
-	
 	public:
 	void graphics()
 	{
@@ -25,45 +23,25 @@ class SanoGraphics
     	cout<<"\n\t\t\t\t\t\t\t        _________    ___     ___     __     ___   ____   ___     ___";
         cout<<"\n\t\t\t\t\t\t\t       |         |  |   |   |   |   /  \   |   | /    | |   |   /   |";
         cout<<"\n\t\t\t\t\t\t\t       |__     __|  |   |___|   |  /    \  |   |/     | |   |  /   /";
-        cout<<"\n\t\t\t\t\t\t\t          |   |     |    ___    | /  /\  \ |      /|  | |   | /   /";
-       
+        cout<<"\n\t\t\t\t\t\t\t          |   |     |    ___    | /  /\  \ |      /|  | |   | /   /"
 	}*/
 };
 class Member
 {
 	public:
-		string Mname,Mcontact_no;
-		int year,month,day,membership;
-	public:
-		void Title_menu();
-		void menu();
+		char Mname[50];//Mcontact_no[50];
+	    float Mid,Mage,Mheight,Mweight;
+	    int year,month,day,membership;
+	    int year1, month1, day1;
 		void Add_Member();
+		void Show_Member();
+		int getID()
+	    {    
+		    return Mid;
+	    }
 };
-void Member::Title_menu()
-{
-	cout<<endl<<endl<<endl<<endl;
-	cout<<"\t\t\t\t\t\t\t\t      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
-	cout<<"\t\t\t\t\t\t\t\t\t       GYM MANAGEMENT SYSTEM"<<endl;
-	cout<<"\t\t\t\t\t\t\t\t      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
-}
-void Member::menu()
-{
-	cout<<endl<<"\t\t\t\t\t\t\t\t            1) Add Members...............";
-	cout<<endl<<"\t\t\t\t\t\t\t\t            2) List Members..............";
-	cout<<endl<<"\t\t\t\t\t\t\t\t            3) Find Members..............";
-	cout<<endl<<"\t\t\t\t\t\t\t\t            4) Workout Sheet.............";
-	cout<<endl<<"\t\t\t\t\t\t\t\t            5) Trainers Information......";
-	cout<<endl<<"\t\t\t\t\t\t\t\t            6) Equipment Information.....";
-	cout<<endl<<"\t\t\t\t\t\t\t\t            7) Exit......................";
-	cout<<endl<<"\t\t\t\t\t\t\t\t      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
-	cout<<"\t\t\t\t\t\t\t\t\t      Choice : ";
-}
 void Member::Add_Member()
 {
-	
-	float Mid,Mage,Mheight,Mweight;
-	
-	int year1, month1, day1;
 	time_t now = time(0);
 	tm *gettime = gmtime(&now);
 	year1 = gettime->tm_year+1900;
@@ -75,7 +53,8 @@ void Member::Add_Member()
    	cout<<"\n\t\t\t\t\t\t\t\t\t******************************************";
 	cout<<"\n";
 	cout<<"\n\t\t\t\t\t\t\t\t\t     Name:";
-	getline(cin,Mname);
+	getchar();
+    cin.getline(Mname,50);
 	fflush(stdin);
 	cout<<"\t\t\t\t\t\t\t\t\t     Id:";
 	cin>>Mid;
@@ -89,7 +68,7 @@ void Member::Add_Member()
 	cout<<"\t\t\t\t\t\t\t\t\t     Weight(in kg):";
 	cin>>Mweight;
 	fflush(stdin);
-	cout<<endl<<"\t\t\t\t\t\t\t\t\t     Current Date:"<<__DATE__<<endl;
+	/*cout<<endl<<"\t\t\t\t\t\t\t\t\t     Current Date:"<<__DATE__<<endl;
 	cout<<"\t\t\t\t\t\t\t\t\t     Membership starting date:";
 	yearwrong:
 	cout<<"\n\t\t\t\t\t\t\t\t\t     Year:";
@@ -128,11 +107,11 @@ void Member::Add_Member()
 	}
 	cout<<"\t\t\t\t\t\t\t\t\t  =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
 	membershipwrong:	  
-	cout<<"\t\t\t\t\t\t\t\t\t  Choose a membership plan:";
-	cout<<"\n\t\t\t\t\t\t\t\t\t    1) 3months";
-	cout<<"\n\t\t\t\t\t\t\t\t\t    2) 6months";
-	cout<<"\n\t\t\t\t\t\t\t\t\t    3) 9months";
-	cout<<"\n\t\t\t\t\t\t\t\t\t    4) 12months";
+	cout<<"\t\t\t\t\t\t\t\t\t Choose a membership plan:";
+	cout<<"\n\t\t\t\t\t\t\t\t\t     3months";
+	cout<<"\n\t\t\t\t\t\t\t\t\t     6months";
+	cout<<"\n\t\t\t\t\t\t\t\t\t     9months";
+	cout<<"\n\t\t\t\t\t\t\t\t\t     12months";
 	cout<<"\n\t\t\t\t\t\t\t\t\t     Enter the membership plan(months):";
 	cin>>membership;
 	if(membership==3||membership==6||membership==9||membership==12)
@@ -141,8 +120,8 @@ void Member::Add_Member()
 		tempmonth=month+membership;
 	    cout<<"\n\t\t\t\t\t\t\t\t\tYour package will end after "; 
 		cout<<membership;
-		cout<<"\n\t\t\t\t\t\t\t\t\tmonths prior to this date.";
-		Sleep(5000);
+		cout<<"\t\t\t\t\t\t\t\t\tmonths prior to this date.";
+		Sleep(500);
 	    if(tempmonth>12)
 	    {
 	        eyear=year+1;
@@ -154,7 +133,7 @@ void Member::Add_Member()
 			cout<<emonth;
 	        cout<<"\n\t\t\t\t\t\t\t\t\tDay:";
 			cout<<day;
-			Sleep(5000);
+			Sleep(2000);
 		}
 		else
 		{
@@ -165,116 +144,233 @@ void Member::Add_Member()
 			cout<<month+membership;
 	        cout<<"\n\t\t\t\t\t\t\t\t\tDay:";
 			cout<<day;
-			Sleep(5000);
+			Sleep(2000);
 		}		 
 	}
 	else
 	{
 		cout<<"\n\t\t\t\t\t\t\t\t\tThis package doesnot exist!!";
-		Sleep(5000);
+		Sleep(2000);
 		goto membershipwrong;
-	}
+	}*/
 }
-int main(){
-	int choice;
-	SanoGraphics dumbbell;
-	dumbbell.graphics();
-	//dumbbell.thankyou();
-	Member member;
+void Member::Show_Member()
+{
+	cout<<"\n\t\t\t\t\t\t\t\t\tName:"<<Mname;
+	cout<<"\n\t\t\t\t\t\t\t\t\tId:"<<Mid;
+	cout<<"\n\t\t\t\t\t\t\t\t\tAge:"<<Mage;
+	cout<<"\n\t\t\t\t\t\t\t\t\tHeight(in foot):"<<Mheight;
+	cout<<"\n\t\t\t\t\t\t\t\t\tWeight(in kg:)"<<Mweight;
+}
+fstream file_obj;
+Member member;
+void add_new()
+{
+	system("cls");	
+    file_obj.open("E:\\Member.txt",ios::app);
+    member.Add_Member();
+	file_obj.write((char*)&member,sizeof(member));
+	system("cls");
+    //SanoGraphics TY;
+	// TY.thankyou();
+	file_obj.close();
+}
+void show_all()
+{
+	system("cls");
+	file_obj.open("E:\\Member.txt",ios::in);
+	if(!file_obj)
+	{
+        cout<<"Error in opening file..";
+    }
+	while(file_obj.read((char*)&member,sizeof(member)));
+	{
+	    member.Show_Member();
+	    getchar();
+	}
+	file_obj.close();
+}
+void find_one(int Fid)
+{
+	system("cls");
+	file_obj.open("E:\\Member.txt",ios::in);
+	if(!file_obj)
+	{
+        cout<<"Error in opening file..";
+    }
+    file_obj.seekg(0);
+	while(file_obj.read((char*)&member,sizeof(member)));
+	{
+		if(member.getID()==Fid)
+		{
+			system("cls");
+			member.Show_Member();
+		}
+		else
+		{
+			cout<<"NO DATA";
+		}
+	}
+	getchar();
+	file_obj.close();
+}
+void edit_one(int Eid)
+{
+    int num;
+    system("cls");
+    file_obj.open("E:\\Member.dat",ios::in|ios::out);
+    if(!file_obj)
+	{
+        cout<<"Error in opening file..";
+    }
+    while(file_obj.read((char*)&member,sizeof(member)))
+    {
+    	if(member.getID()==Eid)
+    	{
+    		member.Show_Member();
+    		cout<<"\nPlease Enter The New details of the member: "<<endl;
+    		member.Add_Member();
+    		int pos=1*sizeof(member);
+    		file_obj.seekp(pos,ios::cur);
+    		file_obj.write((char*)&member,sizeof(member));
+    		cout<<endl<<endl<<"\t Record Successfully Updated...";
+    	}
+    	else
+    	{
+    		cout<<"Not Found";
+		}
+    }
+    file_obj.close();
+    getchar();
+}
+void menu()
+{
 	top:
-	dumbbell.graphics();
-	member.Title_menu();
-	member.menu();
+	int choice;
+	cout<<endl<<endl<<endl<<endl;
+	cout<<"\t\t\t\t\t\t\t\t      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
+	cout<<"\t\t\t\t\t\t\t\t\t       GYM MANAGEMENT SYSTEM"<<endl;
+	cout<<"\t\t\t\t\t\t\t\t      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
+	cout<<endl<<"\t\t\t\t\t\t\t\t            1) Add Members...............";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            2) List Members..............";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            3) Find Members..............";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            4) Trainers Information......";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            5) Equipment Information.....";
+	cout<<endl<<"\t\t\t\t\t\t\t\t            6) Exit......................";
+	cout<<endl<<"\t\t\t\t\t\t\t\t      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
+	cout<<"\t\t\t\t\t\t\t\t\t      Choice : ";
 	cin>>choice;
 	fflush(stdin);
 	switch(choice)
 	{
-	    case 1:	
-	    {
-	    	AddNewMember:
-	    	system("cls");
-	    	int YesNo;	
-	        fstream file_obj;
-            file_obj.open("D:\Member.txt",ios::out);
-            if(file_obj==NULL)
-   	    	{
-   	     		file_obj.open("D:\Member.txt",ios::out);
-   	     		if(file_obj==NULL)
-   	     		{
-   	     	    	printf("File not opened!!!");
-   	     	    	exit(0);
-   	     	   		return 0;
-   	        	}
-	   		}
-        	member.Add_Member();
-		    file_obj.write((char*)&member,sizeof(member));
-		    YesNoChoice:
-		    system("cls");
-	        SanoGraphics TY;
-		       // TY.thankyou();
-			cout<<"\n\t\t\t\t\t\t\t\t\tDo you want to add another member:";
-		    cout<<"\n\t\t\t\t\t\t\t\t\t1)Yes                        2)No"<<endl;
-		    cout<<"\t\t\t\t\t\t\t\t\tChoice:";
-	        cin>>YesNo;
-		    if(YesNo==1)
-		    {
-		        system("cls");
-		        goto AddNewMember;
+	    case 1:
+	    	{
+	    		AddNewMember:
+	    		int YesNo;
+	    		add_new();
+	    		cout<<"\n\t\t\t\t\t\t\t\t\tDo you want to add another member:";
+		        cout<<"\n\t\t\t\t\t\t\t\t\t1)Yes                        2)No"<<endl;
+		        YesNoChoice:
+		        cout<<"\t\t\t\t\t\t\t\t\tChoice:";
+		        cin>>YesNo;
+		        if(YesNo==1)
+		        {
+		        	system("cls");
+		        	goto AddNewMember;
+				}
+				if(YesNo==2)
+				{
+					system("cls");
+					goto top;
+				}
+				else
+				{
+					cout<<"\n\t\t\t\t\t\t\t\t\tWrong Entry!!";
+					goto YesNoChoice;
+					system("cls");
+				}
+		        break;
 			}
-			if(YesNo==2)
-			{
-				system("cls");
-				goto top;
-			}
-			else
-			{
-				cout<<"\n\t\t\t\t\t\t\t\t\tWrong Entry!!";
-				goto YesNoChoice;
-				system("cls");
-			}
-			break;
-		}
-	    	
 	    case 2:
-			system("cls");
-		    cout<<"Hii";
-			goto top;
-		    break;		
+	    	{
+	    		show_all();
+		        break;	
+			}
 	    case 3:
-	    {
-	   		system("cls");
-		    cout<<"YoYo";
-			break;
-		}
+	    	{
+	    		int findid;
+	    		system("cls");
+	    		cout<<"\n\t\t\t\t\t\t\t\t\tEnter num:";
+	    		cin>>findid;
+		        find_one(findid);
+	            int datachoice;
+			    cout<<"\n\t\t\t\t\t\t\t\t\tWhat do you want to do with this data:";
+			    datachoicewrong:
+	            cout<<"\n\t\t\t\t\t\t\t\t\t1.Modify";
+			    cout<<"\n\t\t\t\t\t\t\t\t\t2.Delete";
+		        cout<<"\n\t\t\t\t\t\t\t\t\t3.Exit";
+	            cout<<"\n\t\t\t\t\t\t\t\t\tInput your choice:";
+	            cin>>datachoice;
+		        fflush(stdin);
+		        system("cls"); 
+		        switch(datachoice)
+		        {
+		        	case 1:
+		        		{
+		        			edit_one(findid);
+		        			break;
+						}
+					case 2:
+						{
+							cout<<"Hi";
+							break;
+						}
+					default:
+					    {
+					    	cout<<"\t\t\t\t\t\t Invalid Choice!!!"<<endl;
+				            Sleep(1000);
+			             	system("cls");
+						}	
+				}
+		        break;
+			}
 	    case 4:
-	   	{
-	    	system("cls");		
-			cout<<"Nameste";
-		    break;	
-		}
+	    	{
+				int editid;
+	    		system("cls");
+	    		cout<<"\n\t\t\t\t\t\t\t\t\tEnter num:";
+	    		cin>>editid;		
+		        edit_one(editid);
+		        break;	
+			}
     	case 5:
-    	{
-    		system("cls");
-			cout<<"hehe";
-			break;
-		}
+    		{
+    			system("cls");
+		cout<<"hehe";
+		break;
+			}
     	case 6:
-    	{
-    		system("cls");
-			cout<<"Hoho";
-    		break;
-		}
-		case 7:
-		{
-			exit(0);		
-		}
+    		{
+    			system("cls");
+    			exit(0);
+    	        break;
+			}
 	    default:
-	    {
-	    	cout<<"\t\t\t\t\t\t Invalid Choice!!!"<<endl;
-			Sleep(1000);
-			system("cls");	
-		}
+	    	{
+	    		cout<<"\t\t\t\t\t\t Invalid Choice!!!"<<endl;
+				Sleep(1000);
+				system("cls");
+				
+			}
 	}
+}
+int main()
+{
+	SanoGraphics dumbbell;
+	dumbbell.graphics();
+	//dumbbell.thankyou();
+	dumbbell.graphics();
+	menu();
 return 0;
 }
 
