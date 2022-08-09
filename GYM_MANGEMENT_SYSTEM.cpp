@@ -5,6 +5,10 @@
 #include<windows.h>
 #include<fstream>
 using namespace std;
+
+
+//Graphics in class
+
 class SanoGraphics
 {
 	
@@ -29,16 +33,23 @@ class SanoGraphics
        
 	}*/
 };
+
+//Graphics ends
+
+//Member class starts
+
 class Member
 {
 	public:
 		string Mname,Mcontact_no;
-		int year,month,day,membership;
+		int year,month,day,membership,Mid;
 	public:
 		void Title_menu();
 		void menu();
 		void Add_Member();
+//		void list_member();
 };
+
 void Member::Title_menu()
 {
 	cout<<endl<<endl<<endl<<endl;
@@ -58,10 +69,14 @@ void Member::menu()
 	cout<<endl<<"\t\t\t\t\t\t\t\t      =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="<<endl;
 	cout<<"\t\t\t\t\t\t\t\t\t      Choice : ";
 }
+
+
+//Add Members
+
 void Member::Add_Member()
 {
 	
-	float Mid,Mage,Mheight,Mweight;
+	float Mage,Mheight,Mweight;
 	
 	int year1, month1, day1;
 	time_t now = time(0);
@@ -175,18 +190,25 @@ void Member::Add_Member()
 		goto membershipwrong;
 	}
 }
+
+//Add members End
+
+//Main Function
 int main(){
 	int choice;
 	SanoGraphics dumbbell;
-	dumbbell.graphics();
+	top:
+//	dumbbell.graphics();
 	//dumbbell.thankyou();
 	Member member;
-	top:
 	dumbbell.graphics();
 	member.Title_menu();
 	member.menu();
 	cin>>choice;
 	fflush(stdin);
+	
+	//Switch Cases Starts
+	
 	switch(choice)
 	{
 	    case 1:	
@@ -195,10 +217,10 @@ int main(){
 	    	system("cls");
 	    	int YesNo;	
 	        fstream file_obj;
-            file_obj.open("D:\Member.txt",ios::out);
+            file_obj.open("D:/Member.txt",ios::out);
             if(file_obj==NULL)
    	    	{
-   	     		file_obj.open("D:\Member.txt",ios::out);
+   	     		file_obj.open("D:/Member.txt",ios::out);
    	     		if(file_obj==NULL)
    	     		{
    	     	    	printf("File not opened!!!");
@@ -236,8 +258,9 @@ int main(){
 		}
 	    	
 	    case 2:
+
 			system("cls");
-		    cout<<"Hii";
+//		    member.list_member();
 			goto top;
 		    break;		
 	    case 3:
@@ -270,11 +293,16 @@ int main(){
 		}
 	    default:
 	    {
-	    	cout<<"\t\t\t\t\t\t Invalid Choice!!!"<<endl;
+	    	cout<<"\n\t\t\t\t\t\t\t Invalid Choice!!!"<<endl;
 			Sleep(1000);
 			system("cls");	
+//			goto top;
 		}
 	}
+	
+	//Switch cases Ends
 return 0;
 }
+
+//End of the program
 
