@@ -18,7 +18,7 @@ class Member
 		void input(); 
 		void add_members();
 		void show_members();
-		void check_bikes();
+		void find_members();
 		void update_bikes();
 		void del_bikes();
 };
@@ -31,9 +31,8 @@ void Member::input()
     cout << "\t\t\t\t\t\t\t\t----------------------------------------------" << endl << endl;
     cout << "\t\t\t\t\t\t\t\t<1> Add New Member's 			               " << endl << endl;
     cout << "\t\t\t\t\t\t\t\t<2> Detail OF ALL The Members In The GYM      " << endl << endl;
-    cout << "\t\t\t\t\t\t\t\t<3> Find Member 			      	           " << endl << endl;
-    cout << "\t\t\t\t\t\t\t\t<4> Delete Member				               " << endl << endl;
-	cout << "\t\t\t\t\t\t\t\t<5> Go Back                                   " << endl << endl;
+    cout << "\t\t\t\t\t\t\t\t<3> Find Member(del/update) 			      	           " << endl << endl;
+	cout << "\t\t\t\t\t\t\t\t<4> Go Back                                   " << endl << endl;
 	cout << "\t\t\t\t\t\t\t\t----------------------------------------------" << endl << endl;
 	cout<<"\t\t\t\t\t\t\t\t\t      Choice : ";
 }
@@ -43,14 +42,13 @@ void Member::add_members()
 	system("cls");
 	cout<<"\n\t\t\t\t\t\t ******Adding new member to the gym****** "<<endl;
 	fstream file_obj0;
-	string Mage,Mheight,Mweight,Mid,Mname;
+	string Mage,Mheight,Mweight,Mid,Mname,temp;
 	fflush(stdin);
 	cout << endl << endl;
 	cout << "\t\t\t\t\t\t\t\tName                      : ";
 	getline(cin, Mname);
 	fflush(stdin);
 	cout << endl << endl;
-//	fflush(stdin);
 	cout << "\t\t\t\t\t\t\t\tId                        : ";
 	getline(cin,Mid);
 	fflush(stdin);
@@ -68,33 +66,9 @@ void Member::add_members()
 	cout << "\t\t\t\t\t\t\t\tWeight                    : ";
 	getline(cin, Mweight);
 	fflush(stdin);
-	
-//						Old code	
-	
-//	cout<<"\n\n\n\n\n\n\n\n"; 
-//   	cout<<"\n\t\t\t\t\t\t\t\t\t(|--|)Add Member details down bellow(|--|)";
-//   	cout<<"\n\t\t\t\t\t\t\t\t\t******************************************";
-//	cout<<"\n";
-//	cout<<"\n\t\t\t\t\t\t\t\t\t     Name:";
-//    getline(cin,Mname);
-//	fflush(stdin);
-//	cout<<"\t\t\t\t\t\t\t\t\t     Id:";
-//	cin>>Mid;
-//	fflush(stdin); 
-//	cout<<"\t\t\t\t\t\t\t\t\t     Age:";
-//	cin>>Mage;
-//	fflush(stdin);
-//	cout<<"\t\t\t\t\t\t\t\t\t     Height(in foot):";
-//	cin>>Mheight;
-//	fflush(stdin);
-//	cout<<"\t\t\t\t\t\t\t\t\t     Weight(in kg):";
-//	cin>>Mweight;
-//	fflush(stdin);
-
-//						Old Code
-
-	file_obj0.open("D://Member2nd.txt",ios::out|ios::app);
-	file_obj0<<" "<<Mname<<" "<<Mid<<" "<<Mage<<" "<<Mheight<<" "<<Mweight<<"\n";
+	temp=" ";
+	file_obj0.open("E://Member2nd.txt",ios::out|ios::app);
+	file_obj0<<" "<<Mname<<" "<<Mid<<" "<<Mage<<" "<<Mheight<<" "<<Mweight<<temp<<"\n";
 	file_obj0.close();
 	cout<<"File Saved!!!";
 	getchar();
@@ -106,105 +80,118 @@ void Member::show_members()
 	system("cls");
 	string Mage,Mheight,Mweight;
 	string Mid;
-	string Mname;
-	
+	string Mname,temp;	
 	cout << "\n\n\n\n\n\n\n\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
     cout << "\t\t\t\t\t\t\t\t\tDetails Of All The Members In The GYM" << endl << endl;
     cout << "\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
-    
     cout << endl << endl;
-	
-	
-//	cout<<"\n\t\t\t\t\t\t\t\t\t******Displaying Members******"<<endl;
 	fstream file_obj0;
-	file_obj0.open("D://Member2nd.txt",ios::in);
+	file_obj0.open("E://Member2nd.txt",ios::in);
 	if(!file_obj0)
 	cout<<"\n\n File Openning Error...";
 	else
 	{
-		cout << "\t\t\t\t\t\tName" << "      " << "Id" << "      " << "AGE" << "     " << "Height" <<"     "<< "Weight" <<"\n\n";
-//		cout<<"\n\n Name    ID    Age    Height     Weight\n\n";
-		file_obj0>>Mname>>Mid>>Mage>>Mheight>>Mweight;
+		file_obj0>>Mname>>Mid>>Mage>>Mheight>>Mweight>>temp;
 		while(!file_obj0.eof())
 		{
-			cout<<"           "<<Mname<<"      "<<Mid<<"      "<<Mage<<"      "<<Mheight<<"      "<<Mweight<<endl<<endl;
-//			cout<<"\t\t\t\t\t"<<Mname<<"  "<<Mid<<"\t\t"<<Mage<<"\t\t\t\t"<<Mheight<<"\t\t"<<Mweight<<"\n\n";
-			file_obj0>>Mname>>Mid>>Mage>>Mheight>>Mweight;
+		    cout<<"\t\t\t\t\t\t\t\t\t\tName:    "<<Mname<<" "<<Mid<<endl;
+		    cout<<"\t\t\t\t\t\t\t\t\t\tID:      "<<Mage<<endl;
+		    cout<<"\t\t\t\t\t\t\t\t\t\tHeight:  "<<Mweight<<endl;
+		    cout<<"\t\t\t\t\t\t\t\t\t\tWeight:  "<<temp<<endl;
+		    cout<<endl<<endl;
+			file_obj0>>Mname>>Mid>>Mage>>Mheight>>Mweight>>temp;
 		}
 		file_obj0.close();
 	}
 }
-//	else if (ch==2)
-//	{		
-//		system("cls");
-//		fstream file2;
-//		int year2,range2;
-//		string name2;
-//		file2.open("E://electricBike.txt",ios::in);
-//		if(!file2)
-//		cout<<"\n\n File Openning Error...";
-//		else
-//		{
-//			cout<<"\n\n Bike Name    Year    Range\n\n";
-//			file2>>name2>>year2>>range2;
-//			while(!file2.eof())
-//			{
-//				cout<<"   "<<name2<<"     "<<year2<<"     "<<range2<<"\t\t"<<"\n\n";
-//				file2>>name2>>year2>>range2;
-//			}
-//			file2.close();
-//		}
-//	}
-//	else
-//	{
-//		cout<<"\n!!!Invalid Choice!!!";
-//		sleep(3);
-//		goto label1;
-//	}	
-//}
-//void bbike::check_bikes()
-//{
-//	label2:
-//	system("cls");
-//	cout<<"\n******Checking Bike******";
-//	cout<<"\nChoose which bike would you like to check........";
-//	cout<<"\n\n1.Petrol Bike"<<endl;
-//	cout<<"\n2.Electric Bike"<<endl;
-//	cout<<"\nEnter your choice :";
-//	cin>>ch;
-//	if(ch == 1 )
-//	{
-//		system("cls");
-//		fstream file1;
-//		int year1,max_power1,max_torque1,count1=0;
-//		string name1,namee1;
-//		file1.open("D://petrolBike.txt",ios::in);
-//		if(!file1)
-//		cout<<"\n\n File Openning Error...";
-//		else
-//		{
-//			cout<<"\n\n Bike Name: : ";
-//			cin>>namee1;
-//			file1>>name1>>year1>>max_power1>>max_torque1;
-//			while(!file1.eof())
-//			{
-//				if(namee1 == name1)
-//				{
-//					system("cls");
-//					cout<<"\n\n\t\t\tBike Name : "<<name1;
-//					cout<<"\n\n\t\t\tYear : "<<year1;
-//					cout<<"\n\n\t\t\tMax_power : "<<max_power1;
-//					cout<<"\n\n\t\t\tMax_torque : "<<max_torque1;
-//					count1++;
-//					break;	
-//				}
-//				file1>>name1>>year1>>max_power1>>max_torque1;
-//			}
-//			file1.close();
-//			if(count1 == 0)
-//			cout<<"\n\n Bike name Not Found...";
-//		}
-//	}
+void Member::find_members()
+{
+	label2:
+	system("cls");
+	cout<<"\n******Finding Members******";
+	system("cls");
+	fstream file_obj0,temp_file;
+	int choiceED;
+	string Mage,Mheight,Mweight,Fid;
+	string Mid;
+	string Mname,temp;
+	temp_file.open("E://temp.txt",ios::app|ios::out);
+	file_obj0.open("E://Member2nd.txt",ios::in);
+	if(!file_obj0)
+	cout<<"\n\n File Openning Error...";
+	else
+	{
+		cout<<"\n\n Member ID: : ";
+		cin>>Fid;
+		file_obj0>>Mname>>Mid>>Mage>>Mheight>>Mweight>>temp;
+		while(!file_obj0.eof())
+		{
+			if(Fid==Mage)
+			{
+				cout<<"\t\t\t\t\t\t\t\t\t\tName:    "<<Mname<<" "<<Mid<<endl;
+		        cout<<"\t\t\t\t\t\t\t\t\t\tID:      "<<Mage<<endl;
+		        cout<<"\t\t\t\t\t\t\t\t\t\tHeight:  "<<Mweight<<endl;
+		        cout<<"\t\t\t\t\t\t\t\t\t\tWeight:  "<<temp<<endl;
+		        cout<<endl<<endl;
+		    	file_obj0>>Mname>>Mid>>Mage>>Mheight>>Mweight>>temp;
+		    	cout <<"\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
+		    	cout<<"\nt\t\t\t\t\t\t\t\t1)Edit  ";
+		    	cout<<"\nt\t\t\t\t\t\t\t\t2)Delete  ";
+		    	cout<<"\nt\t\t\t\t\t\t\t\t3)Back ";
+		    	cout <<"\n\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
+		    	cout<<"t\t\t\t\t\t\t\t\t  Choice:";
+		    	cin>>choiceED;
+		    	fflush(stdin);
+		    	switch(choiceED)
+		    	{
+		    		case 1:
+                     	cout << endl << endl;
+                    	cout << "\t\t\t\t\t\t\t\tName                      : ";
+                    	getline(cin, Mname);
+                       	fflush(stdin);
+                     	cout << endl << endl;
+                      	cout << "\t\t\t\t\t\t\t\tId                        : ";
+                    	getline(cin,Mid);
+                     	fflush(stdin);
+                     	cout << endl << endl;
+                         	cout << "\t\t\t\t\t\t\t\tAge                       : ";
+                     	getline(cin,Mage);
+                    	fflush(stdin);
+                       	cout << endl << endl;
+	                    fflush(stdin);
+                    	cout << "\t\t\t\t\t\t\t\tHeight                    : ";
+                      	getline(cin,Mheight);
+                        fflush(stdin);
+                        cout << endl << endl;
+                  	    fflush(stdin);
+                	    cout << "\t\t\t\t\t\t\t\tWeight                    : ";
+                    	getline(cin, Mweight);
+                    	fflush(stdin);
+                    	temp=" ";
+                     	temp_file<<" "<<Mname<<" "<<Mid<<" "<<Mage<<" "<<Mheight<<" "<<Mweight<<temp<<"\n";
+                     	break;
+                	case 2:
+                		cout<<"Hi";
+                		break;
+                	case 3:
+                		cout<<"Hello";
+                		break;
+                	default:
+					    break;	
+ 				}
+			}
+			else
+			{
+				temp_file<<" "<<Mname<<" "<<Mid<<" "<<Mage<<" "<<Mheight<<" "<<Mweight<<temp<<"\n";
+				file_obj0>>Mname>>Mid>>Mage>>Mheight>>Mweight>>temp;
+			}
+		}
+		file_obj0.close();
+	    temp_file.close();
+        remove("E://Member2nd.txt");
+        rename("E://temp.txt","E://Member2nd.txt");		
+	}
+}
 //	else if( ch ==2)
 //	{ 
 //		system("cls");
@@ -497,7 +484,8 @@ void adminlogin()
 	  				member.show_members();
 	  				break;
 	  			case 3:
-	  				exit(0);
+	  				member.find_members();
+	  				break;
 	  			default:
 		            cout<<"Wrong Choice!!";	
 			}
@@ -529,4 +517,3 @@ void mainmenu()
     cout << "\t\t\t\t\t\t\t\t--------------------------------------------" << endl << endl;
     cout << "\t\t\t\t\t\t\t\tEnter Your Choice:     ";
 }
-
