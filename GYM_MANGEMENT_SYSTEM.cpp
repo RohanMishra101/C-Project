@@ -6,6 +6,7 @@
 #include<string>
 #include<unistd.h>
 #include<windows.h>
+#include<ctime>
 using namespace std;
 /******************************************************FunctionDeclaration************************************************/
 void adminlogin();
@@ -43,6 +44,20 @@ void Member::add_members()
 	cout<<"\n\t\t\t\t\t\t ******Adding new member to the gym****** "<<endl;
 	fstream file_obj0;
 	string Mage,Mheight,Mweight,Mid,Mname,temp;
+	
+	//				Time
+	
+	string year,month,day,membership;
+	int year2,month2,day2;
+	int year1, month1, day1;
+	time_t now = time(0);
+	tm *gettime = gmtime(&now);
+	year1 = gettime->tm_year+1900;
+	month1 = gettime->tm_mon+1;
+	day1 = gettime->tm_mday;
+	
+	//				Time  
+	  
 	fflush(stdin);
 	cout << endl << endl;
 	cout << "\t\t\t\t\t\t\t\tName                      : ";
@@ -66,9 +81,52 @@ void Member::add_members()
 	cout << "\t\t\t\t\t\t\t\tWeight                    : ";
 	getline(cin, Mweight);
 	fflush(stdin);
+	cout<< "\n\t\t\t\t\t\t\t\t=-=-=-=-=-=-=-=-=-=-=-=-=-=";
+	//			Time
+	
+	cout<<endl<<"\t\t\t\t\t\t\t\tCurrent Date:"<<__DATE__<<endl;
+	cout<<"\n\t\t\t\t\t\t\t\tMembership starting date:";
+	yearwrong:
+	cout<<"\n\t\t\t\t\t\t\t\tYear: ";
+	cin>>year2;
+	fflush(stdin);
+	if(year2<year1||year2>2022)
+	{
+		cout<<"\t\t\t\t\t\t\t\t Wrong Entry!!!!";
+		cout<<"\n";
+		goto yearwrong;
+	}
+	else{
+		monthwrong:
+		cout<<"\t\t\t\t\t\t\t\t Month: ";
+		cin>>month2;
+		fflush(stdin);
+		if(month2>12||month2<month1)
+		{
+			cout<<"\t\t\t\t\t\t\t\tWrong Entry!!!!";
+			cout<<"\n";
+		    goto monthwrong;
+		}
+		else{
+			daywrong: 
+			cout<<"\t\t\t\t\t\t\t\t Day: ";
+			cin>>day2;
+			fflush(stdin);
+			if(month2==month1 && (day2 >= 30 || day2 < day1)){
+				cout<<"\t\t\t\t\t\t\t\tWrong Entry!!";
+				cout<<"\n";
+				goto daywrong;
+			}
+						
+		}	 
+	}
+	year = year2;
+	month = month2;
+	day = day2;
+	//			Time
 	temp=" ";
-	file_obj0.open("E://Member2nd.txt",ios::out|ios::app);
-	file_obj0<<" "<<Mname<<" "<<Mid<<" "<<Mage<<" "<<Mheight<<" "<<Mweight<<temp<<"\n";
+	file_obj0.open("D://Member2nd.txt",ios::out|ios::app);
+	file_obj0<<" "<<Mname<<" "<<Mid<<" "<<Mage<<" "<<Mheight<<" "<<Mweight<<" "<<temp<<" "<<year<<" "<<month<<" "<<day<<"\n";
 	file_obj0.close();
 	cout<<"File Saved!!!";
 	getchar();
@@ -80,26 +138,29 @@ void Member::show_members()
 	system("cls");
 	string Mage,Mheight,Mweight;
 	string Mid;
-	string Mname,temp;	
+	string Mname,temp;
+	string year,month,day;	
 	cout << "\n\n\n\n\n\n\n\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
     cout << "\t\t\t\t\t\t\t\t\tDetails Of All The Members In The GYM" << endl << endl;
     cout << "\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
     cout << endl << endl;
 	fstream file_obj0;
-	file_obj0.open("E://Member2nd.txt",ios::in);
+	file_obj0.open("D://Member2nd.txt",ios::in);
 	if(!file_obj0)
 	cout<<"\n\n File Openning Error...";
 	else
 	{
-		file_obj0>>Mname>>Mid>>Mage>>Mheight>>Mweight>>temp;
+		file_obj0>>Mname>>Mid>>Mage>>Mheight>>Mweight>>temp>>year>>month>>day;
 		while(!file_obj0.eof())
 		{
 		    cout<<"\t\t\t\t\t\t\t\t\t\tName:    "<<Mname<<" "<<Mid<<endl;
 		    cout<<"\t\t\t\t\t\t\t\t\t\tID:      "<<Mage<<endl;
 		    cout<<"\t\t\t\t\t\t\t\t\t\tHeight:  "<<Mweight<<endl;
 		    cout<<"\t\t\t\t\t\t\t\t\t\tWeight:  "<<temp<<endl;
+		    cout<<"\t\t\t\t\t\t\t\t\t\t Membership Date:  "<<year<<"/"<<month<<"/"<<day<<endl;
+
 		    cout<<endl<<endl;
-			file_obj0>>Mname>>Mid>>Mage>>Mheight>>Mweight>>temp;
+			file_obj0>>Mname>>Mid>>Mage>>Mheight>>Mweight>>temp>>year>>month>>day;
 		}
 		file_obj0.close();
 	}
@@ -115,8 +176,8 @@ void Member::find_members()
 	string Mage,Mheight,Mweight,Fid;
 	string Mid;
 	string Mname,temp;
-	temp_file.open("E://temp.txt",ios::app|ios::out);
-	file_obj0.open("E://Member2nd.txt",ios::in);
+	temp_file.open("D://temp.txt",ios::app|ios::out);
+	file_obj0.open("D://Member2nd.txt",ios::in);
 	if(!file_obj0)
 	cout<<"\n\n File Openning Error...";
 	else
@@ -168,7 +229,7 @@ void Member::find_members()
                     	getline(cin, Mweight);
                     	fflush(stdin);
                     	temp=" ";
-                     	temp_file<<" "<<Mname<<" "<<Mid<<" "<<Mage<<" "<<Mheight<<" "<<Mweight<<temp<<"\n";
+                     	temp_file<<" "<<Mname<<" "<<Mid<<" "<<Mage<<" "<<Mheight<<" "<<Mweight<<" "<<temp<<"\n";
                      	break;
                 	case 2:
                 		cout<<"Hi";
@@ -188,8 +249,8 @@ void Member::find_members()
 		}
 		file_obj0.close();
 	    temp_file.close();
-        remove("E://Member2nd.txt");
-        rename("E://temp.txt","E://Member2nd.txt");		
+        remove("D://Member2nd.txt");
+        rename("D://temp.txt","E://Member2nd.txt");		
 	}
 }
 //	else if( ch ==2)
