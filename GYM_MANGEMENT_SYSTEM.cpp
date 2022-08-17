@@ -70,6 +70,7 @@ void Member::add_members()
 	fstream file_obj1;
 	string Mage,Mheight,Mweight,Mid,MFname,MLname,temp;
 	fflush(stdin);
+	file_obj0.open("D://Member2nd.txt",ios::app|ios::in);
 	cout << endl<<endl;
 	cout << "\t\t\t\t\t\t\t\t\t\t\tName                      ";
 	cout << "\n\t\t\t\t\t\t\t\t\t\tFirst Name :";
@@ -79,8 +80,20 @@ void Member::add_members()
 	getline(cin, MLname);
 	fflush(stdin);
 	cout << endl;
+	Midwrong:
 	cout << "\t\t\t\t\t\t\t\t\t\tId  : ";
 	getline(cin,Mid);
+	file_obj0>>MFname>>MLname;
+	file_obj0>>Mid>>Mage>>Mheight>>Mweight>>temp;
+	while(!file_obj0.eof())
+	{
+		if(Mid==Mid)
+		{
+			cout << "\t\t\t\t\t\t\t\t\t\tID already exists!!";
+			getchar();
+			goto Midwrong;
+		}
+	}
 	fflush(stdin);
 //	cout << endl;
 	cout << "\t\t\t\t\t\t\t\t\t\tAge  : ";
@@ -123,6 +136,7 @@ void Member::add_members()
 		goto flag1;
 	}
 	temp=".";
+	file_obj0.close();
 	file_obj0.open("D://Member2nd.txt",ios::out|ios::app);
 	file_obj0<<" "<<MFname<<" "<<MLname;
 	file_obj0<<" "<<Mid<<" "<<Mage<<" "<<Mheight<<" "<<Mweight<<" "<<temp<<"\n";
@@ -174,7 +188,7 @@ void Member::find_members()
 	string Mage,Mheight,Mweight,Fid;
 	string Mid;
 	string MFname,MLname,temp;
-	file_obj0.open("D://Member2nd.txt",ios::in);
+	file_obj0.open("D://Member2nd.txt",ios::app|ios::in);
 	if(!file_obj0)
 	cout<<"\n\n File Openning Error...";
 	else
