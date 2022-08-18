@@ -71,7 +71,7 @@ void Member::add_members()
 	string Mage,Mheight,Mweight,Mid,MFname,MLname,temp;
 	fflush(stdin);
 	cout << endl<<endl;
-	cout << "\t\t\t\t\t\t\t\t\t\t\tName                      ";
+	cout << "\t\t\t\t\t\t\t\t\t\tName                      ";
 	cout << "\n\t\t\t\t\t\t\t\t\t\tFirst Name :";
 	getline(cin, MFname);
 	fflush(stdin);
@@ -103,9 +103,9 @@ void Member::add_members()
 	
 	cout << "\t\t\t\t\t\t\t\t\tSelect your Membership Package: \n";
 	cout << "\t\t\t\t\t\t\t\t\t1) SILVER	 	  2) GOLD\n";
-	cout << "\n\t\t\t\t\t\t\t\t\t\t         Choice: ";
+	cout << "\n\t\t\t\t\t\t\t\t\t\t    Choice: ";
 	cin>>package;
-	cout<< "\n\t\t\t\t\t\t\t\t\t\t Enter total month of Subscription : ";
+	cout<< "\n\t\t\t\t\t\t\t\t\tEnter total month of Subscription : ";
 	cin >> month;
 	if(package == 1){
 		total = month * 2000;
@@ -116,7 +116,7 @@ void Member::add_members()
 	else if(package == 2){
 		total = month * 3000;
 		file_obj1.open("D://Monetary.txt",ios::out|ios::app);
-		file_obj1<<" "<<package<<"\n";
+		file_obj1<<" "<<total<<"\n";
 		file_obj1.close();
 	}
 	else{
@@ -127,7 +127,7 @@ void Member::add_members()
 	file_obj0<<" "<<MFname<<" "<<MLname;
 	file_obj0<<" "<<Mid<<" "<<Mage<<" "<<Mheight<<" "<<Mweight<<" "<<temp<<"\n";
 	file_obj0.close();
-	cout<<"Member addde sucessfully";
+	cout<<"\n\t\t\t\t\t\t\t\t\tMember addde sucessfully!!!";
 	Sleep(2000);
 //	getchar();
 	system("cls");
@@ -153,23 +153,26 @@ void Member::show_members()
 		file_obj0>>Mid>>Mage>>Mheight>>Mweight>>temp;
 		while(!file_obj0.eof())
 		{
-		    cout<<"\t\t\t\t\t\t\t\t\t\tName     :"<<MFname<<" "<<MLname<<endl;
-		    cout<<"\t\t\t\t\t\t\t\t\t\tID       :"<<Mid<<endl;
-		    cout<<"\t\t\t\t\t\t\t\t\t\tAge      :"<<Mage<<endl;
-		    cout<<"\t\t\t\t\t\t\t\t\t\tHeight   :"<<Mheight<<endl;
-		    cout<<"\t\t\t\t\t\t\t\t\t\tWeight   :"<<Mweight<<endl;
+		    cout<<"\n\t\t\t\t\t\t||\t\t\t\tName     :"<<MFname<<" "<<MLname<<"\t\t\t\t||";
+		    cout<<"\n\t\t\t\t\t\t||\t\t\t\tID       :"<<Mid<<"\t\t\t\t\t||";
+		    cout<<"\n\t\t\t\t\t\t||\t\t\t\tAge      :"<<Mage<<"\t\t\t\t\t||";
+		    cout<<"\n\t\t\t\t\t\t||\t\t\t\tHeight   :"<<Mheight<<"\t\t\t\t\t||";
+		    cout<<"\n\t\t\t\t\t\t||\t\t\t\tWeight   :"<<Mweight<<"\t\t\t\t\t||";
 		    cout<<endl<<endl;
 			file_obj0>>MFname>>MLname>>Mid>>Mage>>Mheight>>Mweight>>temp;
 		}
 		file_obj0.close();
 	}
+	getch();
 }
 void Member::find_members()
 {
 	label2:
 	system("cls");
-	cout<<"\n******Finding Members******";
-	system("cls");
+//	cout << "\n\n\n\n\n\n\n\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
+	cout<<endl<<endl;
+    cout << "\t\t\t\t\t\t\t\t\t\tFinding Members" << endl << endl;
+    cout << "\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
 	fstream file_obj0;
 	string Mage,Mheight,Mweight,Fid;
 	string Mid;
@@ -181,17 +184,19 @@ void Member::find_members()
 	{
 		cout<<"\n\n\t\t\t\t\t\t\t\t\t\tMember ID: : ";
 		cin>>Fid;
+//		 cout << "\n\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl;
+		cout<<endl;
 		file_obj0>>MFname>>MLname;
 		file_obj0>>Mid>>Mage>>Mheight>>Mweight>>temp;
 		while(!file_obj0.eof())
 		{
 			if(Fid==Mid)
 			{
-				cout<<"\t\t\t\t\t\t\t\t\t\tName     :"<<MFname<<" "<<MLname<<endl;
-		        cout<<"\t\t\t\t\t\t\t\t\t\tID       :"<<Mid<<endl;
-		        cout<<"\t\t\t\t\t\t\t\t\t\tAge      :"<<Mage<<endl;
-		        cout<<"\t\t\t\t\t\t\t\t\t\tHeight   :"<<Mheight<<endl;
-		        cout<<"\t\t\t\t\t\t\t\t\t\tWeight   :"<<Mweight<<endl;
+				cout<<"\n\t\t\t\t\t\t||\t\t\t\tName     :"<<MFname<<" "<<MLname<<"\t\t\t\t||";
+		   		cout<<"\n\t\t\t\t\t\t||\t\t\t\tID       :"<<Mid<<"\t\t\t\t\t||";
+		    	cout<<"\n\t\t\t\t\t\t||\t\t\t\tAge      :"<<Mage<<"\t\t\t\t\t||";
+		    	cout<<"\n\t\t\t\t\t\t||\t\t\t\tHeight   :"<<Mheight<<"\t\t\t\t\t||";
+		    	cout<<"\n\t\t\t\t\t\t||\t\t\t\tWeight   :"<<Mweight<<"\t\t\t\t\t||";
 		        cout<<endl<<endl;
 		        break;
 	 	    }
@@ -208,14 +213,14 @@ void Member::update_member()
     string Mage,Mheight,Mweight,Fid;
 	string Mid;
 	string MFname,MLname,temp;
-	cout<<"\n\n\t\t\t\tUpdate Member Record";
+	cout<<"\n\n\t\t\t\t\t\t\t\t\t\tUpdate Member Record";
 	file_obj0.open("D://Member2nd.txt",ios::in);
 	temp_file.open("D://temp_file.txt",ios::app|ios::out);
 	if(!file_obj0)
-	cout<<"\n\n File Openning Error...";
+	cout<<"\n\n\t\t\t\t\t\t\t\t\t\t File Openning Error...";
 	else
 	{
-		cout<<"\n\n Member ID: : ";
+		cout<<"\n\n\t\t\t\t\t\t\t\t\t\t\t Member ID: : ";
 		cin>>Fid;
 		fflush(stdin);
 		file_obj0>>MFname>>MLname;
@@ -225,30 +230,30 @@ void Member::update_member()
 			if(Fid==Mid)
 			{
 				cout << endl << endl;
-               	cout << "\t\t\t\t\t\t\t\tName                      ";
-             	cout << "\n\t\t\t\t\t\t\t\tFirst Name :";
+				cout << "\t\t\t\t\t\t\t\t\t\tName                      ";
+				cout << "\n\t\t\t\t\t\t\t\t\t\tFirst Name :";
             	getline(cin, MFname);
             	fflush(stdin);
-             	cout << "\t\t\t\t\t\t\t\tLast Name  :";
+             	cout << "\t\t\t\t\t\t\t\t\t\tLast Name  :";
             	getline(cin, MLname);
              	fflush(stdin);
                 cout << endl << endl;
-                cout << "\t\t\t\t\t\t\t\tId                        : ";
+                cout << "\t\t\t\t\t\t\t\t\t\tId  : ";
                 getline(cin,Mid);
                 fflush(stdin);
                 cout << endl << endl;
-                cout << "\t\t\t\t\t\t\t\tAge                       : ";
-                getline(cin,Mage);
+				cout << "\t\t\t\t\t\t\t\t\t\tAge  : ";
+	            getline(cin,Mage);
                 fflush(stdin);
                 cout << endl << endl;
 	            fflush(stdin);
-                cout << "\t\t\t\t\t\t\t\tHeight                    : ";
+                cout << "\t\t\t\t\t\t\t\t\t\tHeight  : ";
                 getline(cin,Mheight);
                 fflush(stdin);
                 cout << endl << endl;
        	        fflush(stdin);
-                cout << "\t\t\t\t\t\t\t\tWeight                    : ";
-                getline(cin, Mweight);
+				cout << "\t\t\t\t\t\t\t\t\t\tWeight  : ";
+	            getline(cin, Mweight);
                 fflush(stdin);
                 temp=".";
                 temp_file<<" "<<MFname<<" "<<MLname<<" "<<Mid<<" "<<Mage<<" "<<Mheight<<" "<<Mweight<<" "<<temp<<"\n";
@@ -529,7 +534,7 @@ void adminlogin()
 //   	system("cls");
    	Member member;
    	Trainer trainer;
-   	int choice,mchoice,tchoice;
+   	char choice,mchoice,tchoice;
    	char x;
    	string pass ="";
    	char ch;
@@ -571,48 +576,52 @@ void adminlogin()
 	  fflush(stdin);
 	  switch(choice)
 	  {
-	  	case 1:
+	  	case '1':
+	  		flag9:
 	  		system("cls");
 	  		member.input();
 	  		cin>>mchoice;
 	  		fflush(stdin);
 	  		switch(mchoice)
 	  		{
-	  			case 1:
+	  			case '1':
 	  				member.add_members();
 	  				break;
-	  			case 2:
+	  			case '2':
 	  				member.show_members();
 	  				break;
-	  			case 3:
+	  			case '3':
 	  				member.find_members();
 	  				break;
 	  			default:
 		            cout<<"Wrong Choice!!";	
+		            goto flag9;
 		            break;
 			}
 	  		break;
-		case 2:
+		case '2':
+			flag8:
 			system("cls");
 			trainer.Tinput();
 	  		cin>>tchoice;
 	  		fflush(stdin);
 	  		switch(tchoice)
 	  		{
-	  			case 1:
+	  			case '1':
 	  				trainer.add_Trainer();
 	  				break;
-	  			case 2:
+	  			case '2':
 	  				trainer.show_Trainer();
 	  				break;
-	  			case 3:
+	  			case '3':
 	  				trainer.find_Trainer();
 	  				break;
 	  			default:
 		            cout<<"Wrong Choice!!";	
+		            goto flag8;
 			}
 	  		break;
-	  	case 3:
+	  	case '3':
 		    system("cls");
 			exit(0);
 			break;	
@@ -646,12 +655,13 @@ void editmenu()
 {
 	int choiceED;
 	Member m1;
-	cout <<"\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
-	cout<<"\n\t\t\t\t\t\t\t\t\t1)Edit  ";
-	cout<<"\n\t\t\t\t\t\t\t\t\t2)Delete  ";
-	cout<<"\n\t\t\t\t\t\t\t\t\t3)Back ";
-	cout <<"\n\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
-	cout<<"t\t\t\t\t\t\t\t\t  Choice:";
+	cout <<endl<<endl;		
+	cout <<"\t\t\t\t\t\t=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=" << endl << endl;
+	cout<<"\n\t\t\t\t\t\t\t\t\t\t1)Edit  ";
+	cout<<"\n\t\t\t\t\t\t\t\t\t\t2)Delete  ";
+	cout<<"\n\t\t\t\t\t\t\t\t\t\t3)Back ";
+	cout<<endl<<endl<<"\t\t\t\t\t\t=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=" << endl << endl;
+	cout<<"\t\t\t\t\t\t\t\t\t\tChoice:";
 	cin>>choiceED;
 	fflush(stdin);
 	switch(choiceED)
