@@ -42,6 +42,7 @@ class Transaction
 		void Minput();
 		void show_Total();
 		void find_Transaction();
+		void show_all();
 };
 /******************************************************MemberFunctionDefinition**************************************************/
 void Member::input()
@@ -78,7 +79,7 @@ void Member::add_members()
 	fstream file_obj1;
 	string MByear,MBmonth,MBday,Mphone,MFname,MLname,Membership;
 	fflush(stdin);
-	file_obj0.open("E://Member2nd.txt",ios::app|ios::in);
+	file_obj0.open("C://Member2nd.txt",ios::app|ios::in);
 	cout << endl<<endl;
 	cout << "\t\t\t\t\t\t\t\t\t\tName                      ";
 	cout << "\n\t\t\t\t\t\t\t\t\t\tFirst Name :";
@@ -106,16 +107,14 @@ void Member::add_members()
 	cout<<"\n\t\t\t\t\t\t\t=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
 	cout<<endl;
 	cout << "\t\t\t\t\t\t\t\t\tSelect your Membership Package: \n";
-	cout << "\t\t\t\t\t\t\t\t\t1) SILVER	 	  2) GOLD\n";
+	cout << "\t\t\t\t\t\t\t\t\t1) SILVER	 	  2) GOLD	 	  3) Details of packages\n";
 	cout << "\n\t\t\t\t\t\t\t\t\t\t    Choice: ";
 	cin>>package;
-	cout<< "\n\t\t\t\t\t\t\t\t\tEnter total month of Subscription : ";
-	cin >> month;
 	if(package == 1)
 	{
 		Membership="SILVER";
 		total = month * 2000;
-		file_obj1.open("E://Monetary.txt",ios::out|ios::app);
+		file_obj1.open("C://Monetary.txt",ios::out|ios::app);
 		file_obj1<<" "<<Mphone<<" "<<total<<"\n";
 		file_obj1.close();
 	}
@@ -123,16 +122,31 @@ void Member::add_members()
 	{
 		Membership="GOLD";
 		total = month * 3000;
-		file_obj1.open("E://Monetary.txt",ios::out|ios::app);
+		file_obj1.open("C://Monetary.txt",ios::out|ios::app);
 		file_obj1<<" "<<Mphone<<" "<<total<<"\n";
 		file_obj1.close();
+	}
+	else if(package == 3)
+	{
+		cout<<"\n\t\t\t\t\t\t\t\t\t Silver                              Gold";
+		cout<<"\n\t\t\t\t\t\t\t\t\t-Gym Equipment access               -Gym Equipment access ";
+		cout<<"\n\t\t\t\t\t\t\t\t\t-Gym Trainer access                 -Gym Trainer access";
+		cout<<"\n\t\t\t\t\t\t\t\t\t-Paid access to massage             -One on One trainer interaction";
+		cout<<"\n\t\t\t\t\t\t\t\t\t and spa sessions";
+		cout<<"\n\t\t\t\t\t\t\t\t\t-Paid entry to sauna                -Online Sessions";
+		cout<<"\n\t\t\t\t\t\t\t\t\t                                    -Free massage and spa sessions";
+		cout<<"\n\t\t\t\t\t\t\t\t\t                                    -Free sauna entry";
+		getchar();
+		goto flag1;
 	}
 	else
 	{
 		goto flag1;
 	}
+	cout<< "\n\t\t\t\t\t\t\t\t\tEnter total month of Subscription : ";
+	cin >> month;
 	file_obj0.close();
-	file_obj0.open("E://Member2nd.txt",ios::out|ios::app);
+	file_obj0.open("C://Member2nd.txt",ios::out|ios::app);
 	file_obj0<<" "<<MFname<<" "<<MLname;
 	file_obj0<<" "<<Mphone<<" "<<MByear<<" "<<MBmonth<<" "<<MBday<<" "<<Membership<<"\n";
 	file_obj0.close();
@@ -149,7 +163,7 @@ void Member::show_members()
     cout << "\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
     cout << endl << endl;
 	fstream file_obj0;
-	file_obj0.open("E://Member2nd.txt",ios::in);
+	file_obj0.open("C://Member2nd.txt",ios::in);
 	if(!file_obj0)
 	cout<<"\n\n File Openning Error...";
 	else
@@ -182,7 +196,7 @@ void Member::find_members()
     cout << "\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
 	fstream file_obj0;
 	string MByear,MBmonth,MBday,Mphone,MFname,MLname,Membership,FID;
-	file_obj0.open("E://Member2nd.txt",ios::app|ios::in);
+	file_obj0.open("C://Member2nd.txt",ios::app|ios::in);
 	if(!file_obj0)
 	cout<<"\n\n File Openning Error...";
 	else
@@ -220,8 +234,8 @@ void Member::update_member()
 	fstream file_obj0,file_obj1,temp_file;
     string MByear,MBmonth,MBday,Mphone,MFname,MLname,Membership,FID;
 	cout<<"\n\n\t\t\t\t\t\t\t\t\t\tUpdate Member Record";
-	file_obj0.open("E://Member2nd.txt",ios::in);
-	temp_file.open("E://temp_file.txt",ios::app|ios::out);
+	file_obj0.open("C://Member2nd.txt",ios::in);
+	temp_file.open("C://temp_file.txt",ios::app|ios::out);
 	if(!file_obj0)
 	cout<<"\n\n\t\t\t\t\t\t\t\t\t\t File Openning Error...";
 	else
@@ -270,7 +284,7 @@ void Member::update_member()
                   	{
                   		Membership="SILVER";
                    		total = month * 2000;
-                   		file_obj1.open("E://Monetary.txt",ios::out|ios::app);
+                   		file_obj1.open("C://Monetary.txt",ios::out|ios::app);
                    		file_obj1<<" "<<Mphone<<" "<<total<<"\n";
                    		file_obj1.close();
                   	}
@@ -278,7 +292,7 @@ void Member::update_member()
                    	{
                   		Membership="GOLD";
                   		total = month * 3000;
-                		file_obj1.open("E://Monetary.txt",ios::out|ios::app);
+                		file_obj1.open("C://Monetary.txt",ios::out|ios::app);
                 		file_obj1<<" "<<Mphone<<" "<<total<<"\n";
                 		file_obj1.close();
                  	}
@@ -294,8 +308,8 @@ void Member::update_member()
 	    }
 	    file_obj0.close();
 	    temp_file.close();
-        remove("E://Member2nd.txt");
-        rename("E://temp_file.txt","E://Member2nd.txt");	
+        remove("C://Member2nd.txt");
+        rename("C://temp_file.txt","C://Member2nd.txt");	
     }
 }
 void Member::del_members()
@@ -304,8 +318,8 @@ void Member::del_members()
 	fstream file_obj0,temp_file;
     string MByear,MBmonth,MBday,Mphone,MFname,MLname,Membership,FID;
 	cout<<"\n\n\t\t\t\tDelete Member Record";
-	file_obj0.open("E://Member2nd.txt",ios::in);
-	temp_file.open("E://temp_file.txt",ios::app|ios::out);
+	file_obj0.open("C://Member2nd.txt",ios::in);
+	temp_file.open("C://temp_file.txt",ios::app|ios::out);
 	if(!file_obj0)
 	cout<<"\n\n File Openning Error...";
 	else
@@ -330,8 +344,8 @@ void Member::del_members()
 	    }
 	    file_obj0.close();
 	    temp_file.close();
-        remove("E://Member2nd.txt");
-        rename("E://temp_file.txt","E://Member2nd.txt");
+        remove("C://Member2nd.txt");
+        rename("C://temp_file.txt","C://Member2nd.txt");
     }
 }
 void Trainer::Tinput()
@@ -382,7 +396,7 @@ void Trainer::add_Trainer()
 	fflush(stdin);
 	cout << endl << endl;
 	temp=".";
-	file_obj1.open("E://Trainer2nd.txt",ios::out|ios::app);
+	file_obj1.open("C://Trainer2nd.txt",ios::out|ios::app);
 	file_obj1<<" "<<TFname<<" "<<TLname<<" "<<Tphone<<" "<<Tsalary<<" "<<Stime<<" "<<Etime<<"\n";
 	file_obj1.close();
 	cout<<"\t\t\t\t\t\t\t\tFile Saved!!!";
@@ -399,7 +413,7 @@ void Trainer::show_Trainer()
     cout << "\t\t\t\t\t\t\t\t\tDetails Of All The Trainers In The GYM" << endl << endl;
     cout << "\t\t\t\t\t\t--------------------------------------------------------------------------------" << endl << endl;
     cout << endl << endl;
-	file_obj1.open("E://Trainer2nd.txt",ios::in);
+	file_obj1.open("C://Trainer2nd.txt",ios::in);
 	if(!file_obj1)
 	cout<<"\n\n File Openning Error...";
 	else
@@ -431,7 +445,7 @@ void Trainer::find_Trainer()
 	fstream file_obj1;
 	string TFid;
 	string Tsalary,Tphone,TFname,TLname,temp,Stime,Etime;
-	file_obj1.open("E://Trainer2nd.txt",ios::in);
+	file_obj1.open("C://Trainer2nd.txt",ios::in);
 	if(!file_obj1)
 	cout<<"\n\n File Openning Error...";
 	else
@@ -467,8 +481,8 @@ void Trainer::update_tainer()
     string TFid;
 	string Tsalary,Tphone,TFname,TLname,temp,Stime,Etime;
 	cout<<"\n\n\t\t\t\tUpdate Trainer Record";
-	file_obj1.open("E://Trainer2nd.txt",ios::in);
-	temp_file1.open("E://temp_file2nd.txt",ios::app|ios::out);
+	file_obj1.open("C://Trainer2nd.txt",ios::in);
+	temp_file1.open("C://temp_file2nd.txt",ios::app|ios::out);
 	if(!file_obj1)
 	cout<<"\n\n File Openning Error...";
 	else
@@ -515,8 +529,8 @@ void Trainer::update_tainer()
 	    }
 	    file_obj1.close();
 	    temp_file1.close();
-        remove("E://Trainer2nd.txt");
-        rename("E://temp_file2nd.txt","E://Trainer2nd.txt");	
+        remove("C://Trainer2nd.txt");
+        rename("C://temp_file2nd.txt","C://Trainer2nd.txt");	
     }
 }
 void Trainer::del_trainer()
@@ -526,8 +540,8 @@ void Trainer::del_trainer()
     string TFid;
 	string Tsalary,Tphone,TFname,TLname,temp,Stime,Etime;
 	cout<<"\n\n\t\t\t\tDelete Member Record";
-	file_obj1.open("E://Trainer2nd.txt",ios::in);
-	temp_file1.open("E://temp_file2nd.txt",ios::app|ios::out);
+	file_obj1.open("C://Trainer2nd.txt",ios::in);
+	temp_file1.open("C://temp_file2nd.txt",ios::app|ios::out);
 	if(!file_obj1)
 	cout<<"\n\n File Openning Error...";
 	else
@@ -552,8 +566,8 @@ void Trainer::del_trainer()
 	    }
 	    file_obj1.close();
 	    temp_file1.close();
-        remove("E://Trainer2nd.txt");
-        rename("E://temp_file2nd.txt","E://Trainer2nd.txt");
+        remove("C://Trainer2nd.txt");
+        rename("C://temp_file2nd.txt","C://Trainer2nd.txt");
     }
 }
 void Transaction::Minput()
@@ -575,9 +589,9 @@ void Transaction::show_Total()
 	int total;
 	string Mphone;
 	int grand_total=0;
-	file_obj1.open("E://Monetary.txt",ios::in);
-	main_money.open("E://total.txt",ios::app|ios::in);
-	temp_money.open("E://temp_money.txt",ios::app|ios::out);
+	file_obj1.open("C://Monetary.txt",ios::in);
+	main_money.open("C://total.txt",ios::app|ios::in);
+	temp_money.open("C://temp_money.txt",ios::app|ios::out);
 	if(!file_obj1)
 	cout<<"\n\n File Openning Error...";
 	else
@@ -594,8 +608,29 @@ void Transaction::show_Total()
     }
     main_money.close();
 	temp_money.close();
-    remove("E://total.txt");
-    rename("E://temp_money.txt","E://total.txt");
+    remove("C://total.txt");
+    rename("C://temp_money.txt","C://total.txt");
+    getchar();
+}
+void Transaction::show_all()
+{
+	fstream file_obj1,temp_money,main_money;
+	int total;
+	string Mphone,phno;
+	file_obj1.open("C://Monetary.txt",ios::in);
+	if(!file_obj1)
+	cout<<"\n\n File Openning Error...";
+	else
+	{
+		file_obj1>>Mphone>>total;
+		while(!file_obj1.eof())
+		{
+			cout<<Mphone<<total<<endl;
+			file_obj1>>Mphone>>total;
+	    }
+	    file_obj1.close();
+	    getchar();
+    }
     getchar();
 }
 void Transaction::find_Transaction()
@@ -603,7 +638,7 @@ void Transaction::find_Transaction()
 	fstream file_obj1,temp_money,main_money;
 	int total;
 	string Mphone,phno;
-	file_obj1.open("E://Monetary.txt",ios::in);
+	file_obj1.open("C://Monetary.txt",ios::in);
 	if(!file_obj1)
 	cout<<"\n\n File Openning Error...";
 	else
@@ -616,6 +651,7 @@ void Transaction::find_Transaction()
 			if(phno==Mphone)
 			{
 				cout<<total<<endl;
+				getchar();
 			}
 			file_obj1>>Mphone>>total;
 	    }
@@ -699,6 +735,9 @@ void adminlogin()
 	  			case '3':
 	  				member.find_members();
 	  				break;
+	  			case '4':
+//	  				goto label;
+	  				break;
 	  			default:
 		            cout<<"Wrong Choice!!";	
 		            goto flag9;
@@ -728,6 +767,8 @@ void adminlogin()
 	  			case '3':
 	  				trainer.find_Trainer();
 	  				break;
+	  			case '4':
+	  				break;
 	  			default:
 		            cout<<"Wrong Choice!!";	
 		            goto flag8;
@@ -743,10 +784,12 @@ void adminlogin()
 	  				tran.show_Total();
 	  				break;
 	  			case '2':
-	  				trainer.show_Trainer();
+	  				tran.show_all();
 	  				break;
 	  			case '3':
 	  				tran.find_Transaction();
+	  				break;
+	  			case '4':
 	  				break;
 	  			default:
 		            cout<<"Wrong Choice!!";	
